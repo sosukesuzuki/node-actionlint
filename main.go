@@ -1,47 +1,53 @@
 package main
 
-import (
-	"io/ioutil"
-	"syscall/js"
+import "syscall/js"
 
-	"github.com/rhysd/actionlint"
-)
+// import (
+// 	"io/ioutil"
+// 	"syscall/js"
 
-var global = js.Global().Get("global")
+// 	"github.com/rhysd/actionlint"
+// )
 
-func encodeErrorAsMap(err *actionlint.Error) map[string]interface{} {
-	obj := make(map[string]interface{}, 4)
-	obj["message"] = err.Message
-	obj["line"] = err.Line
-	obj["column"] = err.Column
-	obj["kind"] = err.Kind
-	return obj
-}
+// var global = js.Global().Get("global")
 
-func fail(err error, when string) {
-	global.Call("throwError", err.Error()+" on "+when)
-}
+// func encodeErrorAsMap(err *actionlint.Error) map[string]interface{} {
+// 	obj := make(map[string]interface{}, 4)
+// 	obj["message"] = err.Message
+// 	obj["line"] = err.Line
+// 	obj["column"] = err.Column
+// 	obj["kind"] = err.Kind
+// 	return obj
+// }
 
-func lint(source string, filePath string) interface{} {
-	opts := actionlint.LinterOptions{}
-	linter, err := actionlint.NewLinter(ioutil.Discard, &opts)
-	if err != nil {
-		fail(err, "creating linter instance")
-		return nil
-	}
-	errs, err := linter.Lint(filePath, []byte(source), nil)
-	if err != nil {
-		fail(err, "applying lint rules")
-		return nil
-	}
+// func fail(err error, when string) {
+// 	global.Call("throwError", err.Error()+" on "+when)
+// }
 
-	return errs
-}
+// func lint(source string, filePath string) interface{} {
+// 	opts := actionlint.LinterOptions{}
+// 	linter, err := actionlint.NewLinter(ioutil.Discard, &opts)
+// 	if err != nil {
+// 		fail(err, "creating linter instance")
+// 		return nil
+// 	}
+// 	errs, err := linter.Lint(filePath, []byte(source), nil)
+// 	if err != nil {
+// 		fail(err, "applying lint rules")
+// 		return nil
+// 	}
 
-func runActionlint(_this js.Value, args []js.Value) interface{} {
-	source := args[0].String()
-	filePath := args[1].String()
-	return lint(source, filePath)
+// 	return errs
+// }
+
+// func runActionlint(_this js.Value, args []js.Value) interface{} {
+// 	source := args[0].String()
+// 	filePath := args[1].String()
+// 	return lint(source, filePath)
+// }
+
+func runActionlint(_thi js.Value, args []js.Value) interface{} {
+  return 3
 }
 
 func main() {
