@@ -5,7 +5,7 @@ install: wasm_exec.js
 wasm_exec.js:
 	cp $$(go env GOROOT)/misc/wasm/wasm_exec.js .
 
-main.wasm: main.go
+main.wasm: main.go go.mod
 	GOOS=js GOARCH=wasm go build -o main.wasm
 
 .PHONY: build install
