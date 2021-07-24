@@ -4,7 +4,10 @@
   "description": "",
   "bin": "bin/node-actionlint.js",
   "scripts": {
-    "build": "make install && make build"
+    "build": "make install && make build",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "lint:eslint": "eslint bin",
+    "lint:prettier": "prettier --check bin"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +16,10 @@
     "@babel/code-frame": "^7.14.5",
     "chalk": "^4.1.1",
     "fast-glob": "^3.2.7"
+  },
+  "devDependencies": {
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.3.2"
   }
 }

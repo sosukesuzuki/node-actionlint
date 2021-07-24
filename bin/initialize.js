@@ -13,7 +13,9 @@ async function initialize() {
     throw new Error(msg);
   };
   require("../wasm_exec.js");
+  // eslint-disable-next-line no-undef
   const go = new Go();
+  // eslint-disable-next-line no-undef
   const { instance } = await WebAssembly.instantiate(
     await fs.readFile(path.join(__dirname, "../main.wasm")),
     go.importObject

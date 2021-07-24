@@ -1,5 +1,4 @@
 const fg = require("fast-glob");
-const path = require("path");
 
 function getPattern(pattern) {
   if (pattern) {
