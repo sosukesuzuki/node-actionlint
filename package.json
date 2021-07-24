@@ -2,11 +2,16 @@
   "name": "node-actionlint",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "bin": "bin/node-actionlint.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@babel/code-frame": "^7.14.5",
+    "chalk": "^4.1.1",
+    "fast-glob": "^3.2.7"
+  }
 }
