@@ -1,6 +1,13 @@
 const fs = require("fs/promises");
 const path = require("path");
 
+/**
+ * @typedef {{ message: string; column: number; line: number; kind: string; }} LintResult
+ */
+
+/**
+ * @returns { (src: string, path: string) => LintResult }
+ */
 async function initialize() {
   global.throwError = function throwError(msg) {
     throw new Error(msg);

@@ -11,14 +11,12 @@ const args = process.argv.slice(2);
 run(args[0]);
 
 /**
- * @typedef {{ message: string; column: number; line: number; kind: string; }} LintResult
+ * @typedef {import("./initialize").LintResult} LintResult
  * @typedef {{ path: string; data: string; }} FileData
  * @typedef { LintResult & FileData } Result
  */
 
 async function run(pattern) {
-  /** @type { (src: string, path: string) => LintResult } */
-  const runActionlint = await initialize();
   const filePaths = await glob(pattern);
   /** @type {Array<FileData>} */
   const files = await Promise.all(
@@ -27,6 +25,7 @@ async function run(pattern) {
       return { path: filePath, data };
     })
   );
+  const runActionlint = await initialize();
   /** @type {Array<Result>} */
   const results = files
     .map((file) => ({ ...runActionlint(data, path), ...file }))
