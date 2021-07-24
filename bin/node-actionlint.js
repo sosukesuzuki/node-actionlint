@@ -41,7 +41,10 @@ async function runLint(files) {
   const runActionlint = await initialize();
   /** @type {Array<Result>} */
   const results = files
-    .map((file) => ({ ...runActionlint(file.data, file.path), ...file }))
+    .map((file) => {
+      const lintResults = runActionlint(file.data, file.path);
+      return lintResults.map((result) => ({ ...result, ...file }));
+    })
     .flat()
     .filter((result) => !!result.message);
   return results;
@@ -61,8 +64,7 @@ function getLogResults(results) {
     text += chalk.bold.white(result.message) + " ";
     text += chalk.gray("[", result.kind, "]") + "\n";
     const codeFrame = codeFrameColumns(result.data, {
-      line: result.line,
-      column: result.column,
+      start: { line: result.line, column: result.column },
     });
     text += codeFrame + "\n";
   }
