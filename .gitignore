@@ -1,2 +1,3 @@
 main.wasm
 /node_modules
+wasm_exec.js
