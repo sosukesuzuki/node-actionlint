@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const { getLintLog } = require("./get-lint-log");
-const { glob } = require("./glob");
-const { runLintForFiles } = require("./run-lint.js");
-const { readFiles } = require("./read-files");
+const { getLintLog } = require("../src/get-lint-log");
+const { glob } = require("../src/glob");
+const { runLintForFiles } = require("../src/run-lint.js");
+const { readFiles } = require("../src/read-files");
 
 const args = process.argv.slice(2);
 run(args[0]);

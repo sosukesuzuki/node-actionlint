@@ -2,7 +2,7 @@ name: Lint
 
 on:
   push:
-    brances:
+    branches:
       - main
       - patch-release
   pull_request:

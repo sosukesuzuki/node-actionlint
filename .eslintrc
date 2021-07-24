@@ -1,0 +1,15 @@
+{
+  "env": {
+    "es2020": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "overrides": [
+    {
+      "files": ["__tests__/*.test.js"],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}

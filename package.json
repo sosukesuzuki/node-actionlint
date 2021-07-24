@@ -7,7 +7,8 @@
     "build": "make install && make build",
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint bin",
-    "lint:prettier": "prettier --check bin"
+    "lint:prettier": "prettier --check bin",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
+    "jest": "^27.0.6",
     "prettier": "^2.3.2"
   }
 }
