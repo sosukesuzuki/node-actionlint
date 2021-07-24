@@ -2,7 +2,15 @@
   "name": "node-actionlint",
   "version": "1.0.0",
   "description": "",
+  "main": "src/index.js",
   "bin": "bin/node-actionlint.js",
+  "files": [
+    "src",
+    "bin",
+    "wasm_exec.js",
+    "main.wasm",
+    "LICENSE.txt"
+  ],
   "scripts": {
     "build": "make install && make build",
     "lint": "npm run lint:eslint && npm run lint:prettier",
