@@ -5,7 +5,7 @@ const path = require("path");
 const { glob } = require("./glob");
 const { initialize } = require("./initialize.js");
 const chalk = require("chalk");
-import { codeFrameColumns } from "@babel/code-frame";
+const { codeFrameColumns } = require("@babel/code-frame");
 
 const args = process.argv.slice(2);
 run(args[0]);
@@ -18,6 +18,13 @@ run(args[0]);
 
 async function run(pattern) {
   const filePaths = await glob(pattern);
+  const files = await readFiles(filePaths);
+  const results = await runLint(files);
+  const text = getLogResults(results);
+  console.log(text);
+}
+
+async function readFiles(filePaths) {
   /** @type {Array<FileData>} */
   const files = await Promise.all(
     filePaths.map(async (filePath) => {
@@ -25,13 +32,16 @@ async function run(pattern) {
       return { path: filePath, data };
     })
   );
+  return files;
+}
+
+async function runLint(files) {
   const runActionlint = await initialize();
   /** @type {Array<Result>} */
   const results = files
     .map((file) => ({ ...runActionlint(file.data, file.path), ...file }))
     .flat();
-  const text = getLogResults(results);
-  console.log(text);
+  return results;
 }
 
 /**
