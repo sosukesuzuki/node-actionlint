@@ -8,7 +8,7 @@ const chalk = require("chalk");
 import { codeFrameColumns } from "@babel/code-frame";
 
 const args = process.argv.slice(2);
-run(args);
+run(args[0]);
 
 /**
  * @typedef {{ message: string; column: number; line: number; kind: string; }} LintResult
@@ -16,10 +16,9 @@ run(args);
  * @typedef { LintResult & FileData } Result
  */
 
-async function run(args) {
+async function run(pattern) {
   /** @type { (src: string, path: string) => LintResult } */
   const runActionlint = await initialize();
-  const pattern = args[0];
   const filePaths = await glob(pattern);
   /** @type {Array<FileData>} */
   const files = await Promise.all(
