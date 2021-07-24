@@ -28,7 +28,7 @@ async function run(pattern) {
   const runActionlint = await initialize();
   /** @type {Array<Result>} */
   const results = files
-    .map((file) => ({ ...runActionlint(data, path), ...file }))
+    .map((file) => ({ ...runActionlint(file.data, file.path), ...file }))
     .flat();
   const text = getLogResults(results);
   console.log(text);
