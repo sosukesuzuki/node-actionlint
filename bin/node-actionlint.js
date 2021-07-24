@@ -21,7 +21,9 @@ async function run(pattern) {
   const files = await readFiles(filePaths);
   const results = await runLint(files);
   const text = getLogResults(results);
-  console.log(text);
+  if (text) {
+    console.log(text);
+  }
 }
 
 async function readFiles(filePaths) {
@@ -40,7 +42,8 @@ async function runLint(files) {
   /** @type {Array<Result>} */
   const results = files
     .map((file) => ({ ...runActionlint(file.data, file.path), ...file }))
-    .flat();
+    .flat()
+    .filter((result) => !!result.message);
   return results;
 }
 
