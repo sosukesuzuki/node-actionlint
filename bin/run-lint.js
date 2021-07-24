@@ -3,6 +3,8 @@ const path = require("path");
 
 /**
  * @typedef {{ message: string; column: number; line: number; kind: string; }} LintResult
+ * @typedef {import("./read-files").FileData} FileData
+ * @typedef {LintResult & FileData} Result
  */
 
 /**
@@ -24,4 +26,21 @@ async function initialize() {
   return global.runActionlint;
 }
 
-module.exports = { initialize };
+/**
+ * @param {FileData[]} files
+ * @returns {Result[]}
+ */
+async function runLint(files) {
+  const runActionlint = await initialize();
+  /** @type {Array<Result>} */
+  const results = files
+    .map((file) => {
+      const lintResults = runActionlint(file.data, file.path);
+      return lintResults.map((result) => ({ ...result, ...file }));
+    })
+    .flat()
+    .filter((result) => !!result.message);
+  return results;
+}
+
+module.exports = { runLint };
