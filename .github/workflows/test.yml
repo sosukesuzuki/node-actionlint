@@ -1,4 +1,4 @@
-name: Lint
+name: Test
 
 on:
   push:
@@ -14,11 +14,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.3.4
 
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: "1.16"
+
       - name: Setup Node.js
         uses: actions/setup-node@v2.2.0
 
       - name: Install Dependencies
         run: npm ci
 
+      - name: Build
+        run: npm run build
+
       - name: Run Lint
-        run: npm test
+        run: npm run test
