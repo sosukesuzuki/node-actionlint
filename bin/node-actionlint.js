@@ -70,3 +70,8 @@ function getLogResults(results) {
   }
   return text;
 }
+
+module.exports = {
+  __getLogResults: getLogResults,
+  __runLint: runLint,
+};
