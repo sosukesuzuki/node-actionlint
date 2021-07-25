@@ -12,11 +12,13 @@
     "LICENSE.txt"
   ],
   "scripts": {
-    "build": "make install && make build",
+    "build": "npm run build:go && npm run build:tsc",
+    "build:go": "make install && make build",
+    "build:tsc": "tsc",
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier --check .",
-    "test": "jest",
+    "test": "npm run build:tsc && jest",
     "release": "node ./scripts/release.js"
   },
   "keywords": [],
@@ -28,11 +30,13 @@
     "fast-glob": "^3.2.7"
   },
   "devDependencies": {
+    "@types/babel__code-frame": "^7.0.3",
     "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
     "execa": "^5.1.1",
     "jest": "^27.0.6",
     "minimist": "^1.2.5",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5"
   }
 }

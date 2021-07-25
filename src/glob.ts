@@ -1,14 +1,12 @@
-const fg = require("fast-glob");
+import fg from "fast-glob";
 
-function getPattern(pattern) {
+function getPattern(pattern: string) {
   if (pattern) {
     return pattern;
   }
   return "./.github/workflows/**.{yml,yaml}";
 }
 
-function glob(pattern) {
+export function glob(pattern: string): Promise<string[]> {
   return fg(getPattern(pattern), { dot: true, absolute: true });
 }
-
-module.exports = { glob };
