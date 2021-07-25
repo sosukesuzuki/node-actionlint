@@ -15,8 +15,8 @@
     "build": "npm run build:go && npm run build:tsc",
     "build:go": "make install && make build",
     "build:tsc": "tsc",
-    "lint": "npm run lint:eslint && npm run lint:prettier",
-    "lint:eslint": "eslint .",
+    "lint": "npm run lint:tsc && npm run lint:prettier",
+    "lint:tsc": "tsc --noEmit",
     "lint:prettier": "prettier --check .",
     "test": "npm run build:tsc && jest",
     "release": "node ./scripts/release.js"
@@ -31,8 +31,6 @@
   },
   "devDependencies": {
     "@types/babel__code-frame": "^7.0.3",
-    "eslint": "^7.31.0",
-    "eslint-config-prettier": "^8.3.0",
     "execa": "^5.1.1",
     "jest": "^27.0.6",
     "minimist": "^1.2.5",
