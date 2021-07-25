@@ -14,8 +14,8 @@
   "scripts": {
     "build": "make install && make build",
     "lint": "npm run lint:eslint && npm run lint:prettier",
-    "lint:eslint": "eslint bin",
-    "lint:prettier": "prettier --check bin",
+    "lint:eslint": "eslint ./{bin,src,scripts}",
+    "lint:prettier": "prettier --check ./{bin,src,scripts}",
     "test": "jest",
     "release": "node ./scripts/release.js"
   },
