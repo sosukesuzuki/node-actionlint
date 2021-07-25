@@ -15,5 +15,6 @@ async function run(pattern) {
   const text = getLintLog(results);
   if (text) {
     console.log(text);
+    process.exit(1);
   }
 }
