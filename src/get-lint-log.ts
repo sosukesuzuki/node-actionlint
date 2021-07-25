@@ -1,16 +1,9 @@
-const path = require("path");
-const chalk = require("chalk");
-const { codeFrameColumns } = require("@babel/code-frame");
+import path from "path";
+import chalk from "chalk";
+import { codeFrameColumns } from "@babel/code-frame";
+import { Result } from "./types";
 
-/**
- * @typedef {import("./run-lint").Result} Result
- */
-
-/**
- * @param {Array<Result>} results
- * @returns {string}
- */
-function getLintLog(results) {
+export function getLintLog(results: Result[]): string {
   let text = "";
   for (const result of results) {
     const relativePath = path.relative(process.cwd(), result.path);
@@ -26,5 +19,3 @@ function getLintLog(results) {
   }
   return text;
 }
-
-module.exports = { getLintLog };

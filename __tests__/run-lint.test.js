@@ -1,4 +1,4 @@
-const { runLint } = require("../src/run-lint");
+const { runLint } = require("../build/run-lint");
 
 describe("run actionlint via wasm", () => {
   it("returns linting error", async () => {

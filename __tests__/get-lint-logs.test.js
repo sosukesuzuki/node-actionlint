@@ -1,6 +1,6 @@
 const chalk = require("chalk");
-const { getLintLog } = require("../src/get-lint-log");
-const { runLint } = require("../src/run-lint");
+const { getLintLog } = require("../build/get-lint-log");
+const { runLint } = require("../build/run-lint");
 
 describe("get linting log", () => {
   it("returns log text from linting errors", async () => {
