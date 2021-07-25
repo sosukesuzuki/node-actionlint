@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "bin": "bin/node-actionlint.js",
   "files": [
-    "src",
+    "build",
     "bin",
     "wasm_exec.js",
     "main.wasm",
