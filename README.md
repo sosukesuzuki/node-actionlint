@@ -28,5 +28,5 @@ const { runActionLint } = require("node-actionlint");
 ### Release
 
 ```
-$ npm run release -- --patch
+$ npm run release -- --release=patch
 ```
