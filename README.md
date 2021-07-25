@@ -22,3 +22,11 @@ const { runActionLint } = require("node-actionlint");
   const results = await runActionLint(source, path);
 })();
 ```
+
+## Development
+
+### Release
+
+```
+$ npm run release -- --patch
+```

@@ -16,7 +16,8 @@
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint bin",
     "lint:prettier": "prettier --check bin",
-    "test": "jest"
+    "test": "jest",
+    "release": "node ./scripts/release.js"
   },
   "keywords": [],
   "author": "",
@@ -29,7 +30,9 @@
   "devDependencies": {
     "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
+    "execa": "^5.1.1",
     "jest": "^27.0.6",
+    "minimist": "^1.2.5",
     "prettier": "^2.3.2"
   }
 }
